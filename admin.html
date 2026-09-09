@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel de administración — JFV Impresiones y Diseño</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="images/logo.png">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+<header class="admin-topbar">
+  <a href="index.html" class="nav-brand">
+    <img src="images/logo.png" alt="Logo JFV Impresiones y Diseño">
+    <span>JFV<small>Panel de administración</small></span>
+  </a>
+  <a href="catalogo.html" class="btn btn-ghost btn-small">Ver catálogo</a>
+</header>
+
+<!-- ============ LOGIN ============ -->
+<div class="admin-login" id="loginView">
+  <div class="admin-login-card">
+    <h1>Panel de administración</h1>
+    <p>Ingresá la contraseña para gestionar los productos del catálogo.</p>
+    <div class="field">
+      <label for="adminPass">Contraseña</label>
+      <input type="password" id="adminPass" autocomplete="current-password">
+    </div>
+    <p class="modal-error" id="loginError">Contraseña incorrecta.</p>
+    <button class="btn btn-primary btn-block" id="loginBtn">Entrar</button>
+  </div>
+</div>
+
+<!-- ============ PANEL ============ -->
+<div class="container admin-panel" id="panelView" style="display:none;">
+  <div class="admin-head">
+    <div>
+      <h1>Tus productos</h1>
+      <p>Agregá, editá, ocultá o eliminá productos del catálogo.</p>
+    </div>
+    <div class="admin-head-actions">
+      <button class="btn btn-ghost btn-small" id="logoutBtn">Cerrar sesión</button>
+      <button class="btn btn-primary" id="newProductBtn">+ Nuevo producto</button>
+    </div>
+  </div>
+
+  <div class="filters" id="adminFilters"></div>
+  <div class="product-grid admin-grid" id="adminGrid"></div>
+</div>
+
+<!-- ============ MODAL DE PRODUCTO ============ -->
+<div class="overlay" id="adminOverlay"></div>
+<div class="modal" id="productModal">
+  <div class="modal-card admin-modal-card">
+    <div class="modal-head">
+      <div>
+        <h3 id="modalTitle">Nuevo producto</h3>
+        <p>Completá los datos y guardá los cambios.</p>
+      </div>
+      <button class="icon-btn" id="closeProductModal" aria-label="Cerrar">✕</button>
+    </div>
+    <form id="productForm">
+      <input type="hidden" id="productId">
+      <div class="field">
+        <label for="pName">Título</label>
+        <input type="text" id="pName" required>
+      </div>
+      <div class="field">
+        <label for="pDesc">Descripción</label>
+        <input type="text" id="pDesc" placeholder="Una línea corta">
+      </div>
+      <div class="field">
+        <label for="pPrice">Precio</label>
+        <input type="number" id="pPrice" min="0" step="1" required>
+      </div>
+      <div class="field">
+        <label for="pCategory">Sección</label>
+        <select id="pCategory" required></select>
+      </div>
+      <div class="field">
+        <label for="pImage">Fotos</label>
+        <input type="file" id="pImage" accept="image/*" multiple>
+        <p class="field-hint">Podés elegir varias fotos a la vez, o agregar más después tocando "Elegir archivos" de nuevo. La primera foto es la que se ve primero en el catálogo.</p>
+        <div class="admin-preview" id="pImagePreview"></div>
+      </div>
+      <div class="field">
+        <label class="admin-checkbox">
+          <input type="checkbox" id="pActive" checked>
+          Publicado (visible en el catálogo)
+        </label>
+      </div>
+      <p class="modal-error" id="productError"></p>
+      <button type="submit" class="btn btn-primary btn-block" id="saveProductBtn">Guardar producto</button>
+    </form>
+  </div>
+</div>
+
+<script src="js/products.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
