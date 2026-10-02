@@ -22,4 +22,6 @@ const CATALOG_CATEGORIES = [
   "Eventos",
   "Regalos personalizados",
   "Impresión 3D",
+  "Insumos e impresiones",
+  "Indumentaria para empresa o emprendedores",
 ];
